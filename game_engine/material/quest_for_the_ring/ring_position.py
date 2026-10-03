@@ -1,7 +1,11 @@
 class RingPosition:
 
-    def __init__(self):
+    def __init__(self, faction):
+        self.faction = faction
         self.position = 0
+
+    def get_faction(self):
+        return self.faction
 
     def get_position(self):
         return self.position

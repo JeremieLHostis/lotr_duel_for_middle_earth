@@ -1,4 +1,4 @@
-import area
+from area import Area
 
 
 class Map:
@@ -118,3 +118,6 @@ class Map:
         # 0 : égalité
         return self.fellowship_control() - self.sauron_control()
 
+if __name__ == "__main__":
+    map = Map()
+    print(map)

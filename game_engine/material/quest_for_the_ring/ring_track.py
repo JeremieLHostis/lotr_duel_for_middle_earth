@@ -1,2 +1,2 @@
-from .ring_position import RingPosition
+from ring_position import RingPosition
 
