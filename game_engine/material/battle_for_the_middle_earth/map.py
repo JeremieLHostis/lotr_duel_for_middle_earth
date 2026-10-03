@@ -1,4 +1,4 @@
-from area import Area
+from game_engine.material.battle_for_the_middle_earth.area import Area
 
 
 class Map:
@@ -29,14 +29,14 @@ class Map:
     def __str__(self):
         s = "Voici l'état courant de la Terre du Milieu :\n"
         for area in self.areas.values():
-            s += "\n " + str(area) + "\n"
+            s += str(area) + "\n"
         balance = self.occupation_balance()
         if balance > 0:
-            s += "\n La Communauté mène de " + str(balance) + "."
+            s += "La Communauté mène de " + str(balance) + "."
         elif balance < 0:
-            s += "\n Sauron mène de " + str(-balance) + "."
+            s += "Sauron mène de " + str(-balance) + "."
         else:
-            s += "\n Les deux factions sont à égalité."
+            s += "Les deux factions sont à égalité."
         return s
 
     def get_area(self, name):
@@ -117,7 +117,3 @@ class Map:
         # Négatif : avantage de Sauron
         # 0 : égalité
         return self.fellowship_control() - self.sauron_control()
-
-if __name__ == "__main__":
-    map = Map()
-    print(map)

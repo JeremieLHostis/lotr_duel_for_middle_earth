@@ -1,4 +1,5 @@
-from ring_position import RingPosition
+from game_engine.material.effect import Effect
+from game_engine.material.quest_for_the_ring.ring_position import RingPosition
 
 
 class RingTrack:
@@ -6,11 +7,11 @@ class RingTrack:
     def __init__(self):
         # Crée la piste de l'Anneau, de structure confondue pour les deux factions, avec ses effets spéciaux.
         self.effects_at_positions = {
-            3: "1 coin",
-            6: "1 unit",
-            9: "Extra turn",
-            12: "Destroy Fortress",
-            14: "Quest achieved"
+            3: Effect("coin", 1),
+            6: Effect("unit", 1),
+            9: Effect("extra turn"),
+            12: Effect("destroys fortress"),
+            14: Effect("quest achieved")
         }
         self.positions = {
             "Frodo": RingPosition("Fellowship"),
@@ -57,20 +58,3 @@ class RingTrack:
         return self.effect_in_path(self.get_nazgul().move(rings))
 
 
-if __name__ == "__main__":
-    ring_track = RingTrack()
-    print(ring_track.effect_at(1))
-    print(ring_track)
-    print(ring_track.fellowship_gets_rings(3))
-    print(ring_track.fellowship_gets_rings(1))
-    print(ring_track.fellowship_gets_rings(3))
-    print(ring_track.fellowship_gets_rings(3))
-    print(ring_track.fellowship_gets_rings(3))
-    print(ring_track.fellowship_gets_rings(3))
-    print(ring_track.sauron_gets_rings(3))
-    print(ring_track.sauron_gets_rings(1))
-    print(ring_track.sauron_gets_rings(3))
-    print(ring_track.sauron_gets_rings(3))
-    print(ring_track.sauron_gets_rings(3))
-    print(ring_track.sauron_gets_rings(3))
-    print(ring_track)
