@@ -94,7 +94,7 @@ class Map:
         else:
             raise ValueError(
                 "Déplacement impossible : mauvais camp, "
-                "pas assez d'unités à déplacer ,"
+                "pas assez d'unités à déplacer, "
                 "ou zones non adjacentes"
             )
 
