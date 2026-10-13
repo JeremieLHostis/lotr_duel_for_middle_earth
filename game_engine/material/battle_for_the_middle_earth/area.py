@@ -1,11 +1,10 @@
 class Area:
 
-    def __init__(self, name, id, units=0):
+    def __init__(self, name, units=0):
         # Crée une des sept zones de la terre du milieu.
         # L'id permet de créer les connexions sur le plateau via sa matrice d'adjacence (cf map.py)
         # L'occupation par troupes et forteresses est modélisée ainsi : l'int est positif si l'élement est à la communauté; négatif s'il est à Sauron
         self.name = name
-        self.id = id
         self.units = units
         self.fortress = 0
 
@@ -33,6 +32,18 @@ class Area:
 
     def is_occupied_by_sauron(self):
         return self.has_sauron_fortress_in() or self.has_sauron_units_in()
+
+    def fellowship_occupies(self):
+        if self.is_occupied_by_fellowship():
+            return 1
+        else :
+            return 0
+
+    def sauron_occupies(self):
+        if self.is_occupied_by_sauron():
+            return 1
+        else :
+            return 0
 
     """ Les trois méthodes suivantes ne sont peut-être pas nécessaires """
 

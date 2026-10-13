@@ -6,14 +6,15 @@ class Map:
     def __init__(self):
         # Crée le plateau représentant la terre du milieu, avec toutes les adjacences entre les zones.
         # Les zones sont accessibles directement par leur nom.
+        # Les zones de départ des deux camps sont directement instanciées avec leur unités de départ.
         self.areas = {
-            "Lindon": Area("Lindon", 0),
-            "Arnor": Area("Arnor", 1, 2),
-            "Rhovanion": Area("Rhovanion", 2),
-            "Rohan": Area("Rohan", 3),
-            "Enedwaith": Area("Enedwaith", 4),
-            "Gondor": Area("Gondor", 5),
-            "Mordor": Area("Mordor", 6, -2)
+            "Lindon": Area("Lindon"),
+            "Arnor": Area("Arnor", 2),
+            "Rhovanion": Area("Rhovanion"),
+            "Rohan": Area("Rohan"),
+            "Enedwaith": Area("Enedwaith"),
+            "Gondor": Area("Gondor"),
+            "Mordor": Area("Mordor", -2)
         }
 
         self.adjacencies = {
@@ -95,21 +96,20 @@ class Map:
             raise ValueError(
                 "Déplacement impossible : mauvais camp, "
                 "pas assez d'unités à déplacer, "
-                "ou zones non adjacentes"
-            )
+                "ou zones non adjacentes")
 
     def fellowship_control(self):
+        # Renvoie le nombre de zones occupées par la Communauté
         control = 0
         for area in self.areas.values():
-            if area.is_occupied_by_fellowship():
-                control += 1
+            control += area.fellowship_occupies()
         return control
 
     def sauron_control(self):
+        # Renvoie le nombre de zones occupées par Sauron
         control = 0
         for area in self.areas.values():
-            if area.is_occupied_by_sauron():
-                control += 1
+            control += area.sauron_occupies()
         return control
 
     def occupation_balance(self):
